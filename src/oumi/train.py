@@ -185,7 +185,7 @@ def train(config: TrainingConfig, **kwargs) -> None:
     config = _finalize_training_config(config)
 
     if is_local_process_zero():
-        logger.info(f"TrainingConfig:\n{pformat(config)}")
+        logger.info(f"TrainingConfig:\n{pformat(config, compact=True)}")
         if telemetry_dir and is_world_process_zero():
             config.to_yaml(str(telemetry_dir / "training_config.yaml"))
 
